@@ -82,11 +82,8 @@ class power(MessagePassing):
             x = self.propagate(edge_index, x=x, edge_weight=edge_weight,
                                size=None)
             
-            # x = x/torch.norm(x, 2)
+            x = x/torch.norm(x, 2)
 
-            norm_value = torch.sqrt((x.to_dense() ** 2).sum())  # Calculate the L2 norm
-            # norm_value = torch.sqrt(torch.sparse.sum(x * x))  # Calculate the L2 norm
-            x = x / norm_value
 
 
         return x 
